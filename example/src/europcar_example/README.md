@@ -54,13 +54,29 @@ The `providers.json` file contains the API endpoint configuration:
 ### Key Files:
 - **`europcar_no_auth_swagger.json`**: Modified OpenAPI spec without security requirements
 - **`providers.json`**: UTCP provider configuration pointing to the local spec
+- **`UPDATE_GUIDE.md`**: Step-by-step guide for updating the swagger file when the API changes
 
 ## 🚀 Running the Example
 
+### Menu-Driven Interface (Original)
 ```bash
 cd example/src/europcar_example
 python europcar_utcp_example.py
 ```
+
+### Chat Interface (New!)
+For a more conversational experience:
+```bash
+cd example/src/europcar_example  
+python europcar_chat_example.py
+```
+
+The chat interface allows you to interact naturally:
+- **"Show me all tools"** - List available API endpoints
+- **"Search for car reservations"** - Find relevant tools  
+- **"Search stations near airport"** - Find stations by location with smart parameter extraction
+- **"Find stations in Istanbul"** - Natural language station search
+- **"What can you do?"** - Get help and examples
 
 ## 💡 Usage Examples
 
