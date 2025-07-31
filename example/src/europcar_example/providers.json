@@ -1,0 +1,7 @@
+[
+    {
+        "name": "europcar_api",
+        "provider_type": "text",
+        "file_path": "./europcar_no_auth_swagger.json"
+    }
+]

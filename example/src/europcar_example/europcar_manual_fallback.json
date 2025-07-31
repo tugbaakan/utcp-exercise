@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Europcar API",
+    "version": "1.0.0",
+    "description": "Europcar car rental API for managing reservations and searching available vehicles"
+  },
+  "servers": [
+    {
+      "url": "https://europcar-api.nuevotest.com",
+      "description": "Europcar API Server"
+    }
+  ],
+  "paths": {
+    "/api/cars": {
+      "get": {
+        "operationId": "get_cars",
+        "summary": "Get available cars",
+        "description": "Search for available cars based on location and dates",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pick-up location"
+          },
+          {
+            "name": "pickup_date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Pick-up date in YYYY-MM-DD format"
+          },
+          {
+            "name": "return_date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Return date in YYYY-MM-DD format"
+          }
+        ]
+      }
+    },
+    "/api/reservations": {
+      "post": {
+        "operationId": "create_reservation",
+        "summary": "Create a new car reservation",
+        "description": "Create a new car reservation with customer details",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "car_id": {
+                    "type": "string",
+                    "description": "ID of the car to reserve"
+                  },
+                  "pickup_location": {
+                    "type": "string",
+                    "description": "Pick-up location"
+                  },
+                  "return_location": {
+                    "type": "string",
+                    "description": "Return location"
+                  },
+                  "pickup_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Pick-up date and time"
+                  },
+                  "return_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Return date and time"
+                  },
+                  "customer_info": {
+                    "type": "object",
+                    "description": "Customer information",
+                    "properties": {
+                      "name": {"type": "string"},
+                      "email": {"type": "string", "format": "email"},
+                      "phone": {"type": "string"}
+                    },
+                    "required": ["name", "email", "phone"]
+                  }
+                },
+                "required": ["car_id", "pickup_location", "return_location", "pickup_date", "return_date", "customer_info"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reservations/{reservation_id}": {
+      "get": {
+        "operationId": "get_reservation",
+        "summary": "Get reservation details",
+        "description": "Get reservation details by ID",
+        "parameters": [
+          {
+            "name": "reservation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Unique reservation identifier"
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "cancel_reservation",
+        "summary": "Cancel reservation",
+        "description": "Cancel an existing reservation",
+        "parameters": [
+          {
+            "name": "reservation_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Unique reservation identifier to cancel"
+          }
+        ]
+      }
+    },
+    "/api/locations": {
+      "get": {
+        "operationId": "get_locations",
+        "summary": "Get available locations",
+        "description": "Get all available pick-up/return locations",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter locations by country code"
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Filter locations by city name"
+          }
+        ]
+      }
+    }
+  }
+}

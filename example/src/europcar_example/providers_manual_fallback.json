@@ -1,0 +1,8 @@
+[
+    {
+        "name": "europcar_manual",
+        "provider_type": "text",
+        "file_path": "./europcar_manual_fallback.json",
+        "_comment": "Fallback configuration using manually defined tools instead of auto-discovery"
+    }
+]
