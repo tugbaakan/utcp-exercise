@@ -78,6 +78,31 @@ The chat interface allows you to interact naturally:
 - **"Find stations in Istanbul"** - Natural language station search
 - **"What can you do?"** - Get help and examples
 
+### LLM-Powered Assistant (Advanced!)
+For intelligent, AI-powered interactions with natural language understanding:
+```bash
+cd example/src/europcar_example
+python europcar_llm_example.py
+```
+
+**Prerequisites**: You need an OpenAI API key. Add it to your `.env` file:
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+The LLM assistant provides:
+- **Natural Language Understanding**: Ask complex questions in plain English
+- **Intelligent Tool Selection**: Automatically finds the right API endpoints for your needs
+- **Context Awareness**: Maintains conversation history for follow-up questions
+- **Smart Parameter Extraction**: Understands intent and fills in API parameters automatically
+- **Conversational Results**: Interprets API responses and explains them in friendly language
+
+Example interactions:
+- *"I need to find car rental locations in Istanbul"*
+- *"Can you help me search for available cars?"*
+- *"What's the pricing for a rental in downtown area?"*
+- *"Show me all the tools available for making reservations"*
+
 ## 💡 Usage Examples
 
 ### Interactive Menu
